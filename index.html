@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* src = https://stackoverflow.com/questions/17109702/remove-all-stylings-border-glow-from-textarea */
+        textarea, textarea:focus
+        {
+            font-family: 'Times New Roman', Times,serif !important;
+            font-size: 16px !important;
+            color: black;
+            border: none;
+            border-bottom: 1px solid black;
+            background: transparent;
+            -webkit-appearance: none;
+            -moz-apperarance: none;
+            -ms-appearance: none;
+            -o-appearance: none;
+            appearance: none;
+            outline: none;
+            padding: 0px;
+            resize: none;
+            width: 100%;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            -ms-box-shadow: none;
+            -o-box-shadow: none;
+            box-shadow: none;
+        }
+        body {
+            background-color: white;
+        }
+        p {
+            font-family: 'Times New Roman', Times,serif;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- https://stackoverflow.com/questions/37444906/how-to-stop-extensions-add-ons-like-grammarly-on-contenteditable-editors -->
+    <textarea
+        id = "text-to-count-input"
+        rows="10"
+        placeholder="input text here"
+        data-gramm="false"
+        data-gramm_editor="false"
+        data-enable-grammarly="false"
+    ></textarea>
+    <p id="word-count-display">word count will appear here</p>
+</body>
+<script>
+    const wordCountDisplay = document.getElementById("word-count-display")
+    const textToCountInput = document.getElementById("text-to-count-input")
+    var numWords = null
+
+    textToCountInput.addEventListener("input", countWords)
+    function countWords() {
+        // src = https://stackoverflow.com/questions/17909646/counting-and-limiting-words-in-a-textarea
+        var numWords = this.value.length ? this.value.match(/\S+/g).length : 0
+        wordCountDisplay.textContent = numWords || 'word count will appear here'
+    }
+    
+</script>
+</html>
